@@ -41,9 +41,11 @@ class ViewController: UIViewController {
             }
             DispatchQueue.main.async {
                 // after response
-                let productsViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProductsViewController") as! ProductsViewController
-                self.navigationController?.pushViewController(productsViewController, animated: true)
                 
+                let productsViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProductsViewController") as! ProductsViewController
+                
+                self.navigationController?.pushViewController(productsViewController, animated: true)
+                productsViewController.prodArr = productArray!                
             }
         }
     }

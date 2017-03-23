@@ -23,7 +23,9 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didTapGetProducts(sender:AnyObject) {
-        
+
+        activityIndicatorTag = 100
+        startActivityIndicator();
         UserModel.sharedInstance.fullName = fullNameTextField.text!
         
         callServiceManager(fullName: UserModel.sharedInstance.fullName!)
@@ -39,9 +41,10 @@ class ViewController: UIViewController {
                 print("productArray error")
                 return
             }
+            weak var weakSelf = self
+            weakSelf?.stopActivityIndicator()
             DispatchQueue.main.async {
                 // after response
-                
                 let productsViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProductsViewController") as! ProductsViewController
                 
                 self.navigationController?.pushViewController(productsViewController, animated: true)

@@ -29,5 +29,4 @@ public class Parser {
         
         return productArray
     }
-    
 }
